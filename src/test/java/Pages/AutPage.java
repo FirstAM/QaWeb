@@ -6,9 +6,8 @@ public interface AutPage {
     String LOGINFORM = "#loginInput";
     String PASSLOGINFORM = "#passwordInput";
     String AUTBUTTON = ".btn.btn-primary";
-
     String SECONDBUTTON = "img[src='sign.png']";
-
+    String AVATAR = "#avatar";
 
 
 //Landing

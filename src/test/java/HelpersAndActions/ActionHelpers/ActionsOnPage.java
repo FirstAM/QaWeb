@@ -4,6 +4,7 @@ import HelpersAndActions.BotHelpers.Bot;
 import HelpersAndActions.Log.Logger;
 
 import Pages.AutPage;
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.WebDriver;
 
 
@@ -18,11 +19,18 @@ public class ActionsOnPage {
     }
 
     public void login(Bot bot) {
+        actions.dclick(AutPage.LOGINFORM);
         actions.write(AutPage.LOGINFORM, bot.getlogin());
+        actions.dclick(AutPage.PASSLOGINFORM);
         actions.write(AutPage.PASSLOGINFORM, bot.getPass());
-        actions.click(AutPage.AUTBUTTON, 1);
+        actions.hover(AutPage.AUTBUTTON, 1);
+        actions.find(AutPage.SECONDBUTTON);
         actions.click(AutPage.SECONDBUTTON);
-//        logger.log("Авторизовались под: " + bot.getlogin(), Logger.Level.INFO);
+        Selenide.confirm();
+        Selenide.confirm();
+        actions.find(AutPage.AVATAR);
+
+        logger.log("Авторизовались под: " + bot.getlogin(), Logger.Level.INFO);
     }
 
 //    public void assertScreenshot(String name){
