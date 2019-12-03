@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import ru.qatools.properties.PropertyLoader;
 
@@ -20,7 +21,7 @@ public class TestLifeCycle{
     protected Logger logger = Logger.getInstance(config.getLogLevel());
     protected GoTo goTo;
     protected ActionsOnPage actions;
-    protected WebDriver wd;
+    static public WebDriver wd;
     protected BotManager botManager = BotManager.getInstance();
 
     @Rule
@@ -34,9 +35,7 @@ public class TestLifeCycle{
         Configuration.browser = config.getBrowser();
         Configuration.timeout = 20000;
         Configuration.baseUrl = config.getProtocol() + "://" + config.getUrl() + ":" + config.getPort();
-//        Configuration.baseUrl = config.getProtocol() + "://" + config.getUrl() + ":" + config.getPort();
         Configuration.browserSize = config.getBrowserSize();
-
         wd = getWebDriver();
         actions = new ActionsOnPage(wd);
         goTo = new GoTo(wd);
@@ -48,4 +47,5 @@ public class TestLifeCycle{
         logger.log("КОНЕЦ теста: " + name.getMethodName(), Logger.Level.INFO, Logger.Color.YELLOW);
         clearBrowserCookies();
     }
+
 }

@@ -1,5 +1,6 @@
 package support;
 
+import HelpersAndActions.ActionHelpers.ChangeCookies;
 import HelpersAndActions.BotHelpers.BotManager;
 import org.junit.Test;
 import org.openqa.selenium.Cookie;
@@ -13,11 +14,15 @@ public class TestAutorization extends TestLifeCycle {
 
     @Test
     public void Autorization() {
-     open("/");
-     actions.login(botManager.getBot(BotManager.TEST));
-     Set<Cookie> allcookies = wd.manage().getCookies();
-     System.out.println(allcookies);
-//        System.out.println();
+        open("/");
+        actions.login(botManager.getBot(BotManager.TEST));
+    }
+
+    @Test
+    public void Clieninfo() throws InterruptedException {
+        ChangeCookies.setCockie();
+        open("/");
+        Thread.sleep(3000);
     }
 
 }

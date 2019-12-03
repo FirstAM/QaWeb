@@ -28,8 +28,7 @@ public class ActionsOnPage {
         actions.click(AutPage.SECONDBUTTON);
         Selenide.confirm();
         Selenide.confirm();
-        actions.find(AutPage.AVATAR);
-
+        actions.check(AutPage.AVATAR);
         logger.log("Авторизовались под: " + bot.getlogin(), Logger.Level.INFO);
     }
 

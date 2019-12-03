@@ -1,8 +1,10 @@
 package HelpersAndActions.ActionHelpers;
 
 import HelpersAndActions.Log.Logger;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.impl.Modals;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
@@ -57,9 +59,8 @@ public class Actions {
     }
     public void hover(String locator) { hover(locator, 0); }
 
-
     public void check(String locator){
-
+        find(locator).shouldBe(Condition.exist);
     }
 
 
